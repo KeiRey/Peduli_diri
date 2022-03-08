@@ -17,9 +17,9 @@ class AuthController extends Controller
     public function postlogin(Request $request)
     {
         if(Auth::attempt($request->only('email','password'))){
-            return redirect('/home')->with('toast_success', 'Berhasil Login');
+            return redirect('/home');
         }
-            return redirect('/login')->with('toast_error', 'Email Atau Password Anda Salah');
+            return redirect('/login');
     }
 
     public function logout()
@@ -41,6 +41,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'no_telp' => $request->no_telp,
+            'kota_id' => 'isi kota anda',
             'gambar' => 'default2.png',
             'password' => bcrypt($request->password),
             'remember_token' => Str::random(60),

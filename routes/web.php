@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,31 +14,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin ', 'AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
-Route::get('/registrasi','AuthController@registrasi')->name('registrasi');
-Route::post('/simpanregistrasi','AuthController@simpanregistrasi');
+Route::get('/registrasi', 'AuthController@registrasi')->name('registrasi');
+Route::post('/simpanregistrasi', 'AuthController@simpanregistrasi');
 
+Route::get('/', function(){
+    return view('dashboard');
+});
 
-Route::group(['middleware' => ['auth','prevent-back-history']], function () {
+Route::get('/home', 'PerjalananController@home')->name('home')->middleware('verified');
 
-    Route::get('/home', function () {
-        return view('home');
-    });
+Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
 
     Route::get('/profile', 'ProfileController@profile');
-    Route::get('/edit/profile/{id}','ProfileController@edit');
+    Route::get('/edit/profile/{id}', 'ProfileController@edit');
     Route::post('/profile', 'ProfileController@update');
 
-    Route::get('/index', 'PerjalananController@index');
+    Route::get('/index', 'PerjalananController@index')->name('index');
     Route::get('/create', 'PerjalananController@create');
     Route::post('/store', 'PerjalananController@store');
     Route::get('/delete/{id}', 'PerjalananController@delete');
     Route::get('/deleteAll', 'PerjalananController@deleteAll');
 });
+
+Auth::routes(['verify' => true]);
+

@@ -10,6 +10,7 @@
   font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
 }
 
+
 /* ==========================================================================
    #GRID
    ========================================================================== */
@@ -356,12 +357,12 @@ input {
   box-shadow: none;
   width: 100%;
   font-size: 14px;
-  font-family: inherit;
+  font-family: inherit;  
 }
 
 .input--style-4 {
   line-height: 50px;
-  background: #fafafa;
+  background: #fff;
   -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
@@ -370,7 +371,7 @@ input {
   border-radius: 5px;
   padding: 0 20px;
   font-size: 16px;
-  color: #666;
+  color: #000;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
@@ -379,29 +380,29 @@ input {
 
 .input--style-4::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
-  color: #666;
+  color: #fff;
 }
 
 .input--style-4:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: #666;
+  color: #fff;
   opacity: 1;
 }
 
 .input--style-4::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: #666;
+  color: #fff;
   opacity: 1;
 }
 
 .input--style-4:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #666;
+  color: #fff;
 }
 
 .input--style-4:-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #666;
+  color: #fff;
 }
 
 .label {
@@ -418,7 +419,7 @@ input {
   padding-left: 30px;
   cursor: pointer;
   font-size: 16px;
-  color: #666;
+  color: #fff;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -537,7 +538,6 @@ input {
   font-size: 16px;
   font-family: inherit;
   padding-left: 22px;
-  padding-right: 50px;
 }
 
 .rs-select2 .select2-container .select2-selection--single .select2-selection__arrow {
@@ -630,13 +630,3 @@ input {
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
-.card-4 .card-body {
-  padding: 57px 65px;
-  padding-bottom: 65px;
-}
-
-@media (max-width: 767px) {
-  .card-4 .card-body {
-    padding: 50px 40px;
-  }
-}

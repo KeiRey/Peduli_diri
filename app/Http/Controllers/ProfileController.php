@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\kota;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,15 +12,17 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-        $user = User::where('id', Auth::user()->id)->first();
 
-    	return view('Auth.profile',compact('user'));
+		$kota = kota::all();
+        $user = User::where('id', Auth::user()->id)->first();
+    	return view('Auth.profile',compact('user', 'kota'));
     }
 
 	public function edit()
 	{
+		$kota = kota::all();
 		$user = User::where('id', Auth::user()->id)->first();
-		return view('Auth.editProfile',compact('user'));
+		return view('perjalanan.editprofile',compact('user', 'kota'));
 	}
 
     public function update(Request $request)
@@ -28,7 +31,6 @@ class ProfileController extends Controller
     			'password' => 'confirmed'
 
     	]);
-
     	$user = User::where('id', Auth::user()->id)->first();
     	$user->nik = $request->nik;
         $user->alamat = $request->alamat;
@@ -44,7 +46,6 @@ class ProfileController extends Controller
             $user->gambar=$request->file('gambar')->getClientOriginalName();
             $user->save();
         }
-
     	return redirect('/profile')->with('succes','Berhasil MengUpdate Data');
 
     }

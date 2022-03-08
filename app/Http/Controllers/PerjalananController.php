@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -10,6 +11,21 @@ use App\perjalanan;
 
 class PerjalananController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
+    public function home()
+    {
+        return view('home');
+    }
 
     public function index()
     {
@@ -20,11 +36,22 @@ class PerjalananController extends Controller
 
     public function create()
     {
+        $user = User::where('id', Auth::user()->id)->first();
+
+        if (empty($user->nik)) {
+            return redirect('/profile')->with('gagal', 'Profile Belum Lengkap');
+        }
+
+        if (empty($user->no_telp)) {
+            return redirect('/profile')->with('gagal', 'Profile Belum Lengkap');
+        }
+
         return view('perjalanan.create');
     }
 
     public function store(Request $request)
     {
+        
         $create = [
             'nama_perjalanan' => $request -> nama_perjalanan,
             'user_id' => Auth::user()->id,
