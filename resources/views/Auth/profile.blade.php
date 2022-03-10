@@ -1,4 +1,4 @@
-@extends('perjalanan.app')
+@extends('perjalanan.app', ['title' => 'Profile'])
 @section('content')
 <div class="card mt-5">
     <div class="card-body">
@@ -36,11 +36,7 @@
                                 <td>:</td>
                                 <td>{{ $user->alamat }}</td>
                             </tr>
-                            <tr>
-                                <td>Kota</td>
-                                <td>:</td>
-                                <td>{{ $user->kota->nama_kota }}</td>
-                            </tr>
+
                         </table>
                     </div>
                 </div>
@@ -69,7 +65,31 @@
                                 </span>
                                 @enderror
                             </div>
-
+                            <div>
+                                <div class="flex-grow-1">
+                                    <div class="form-group">
+                                        <h5>Alamat</h5>
+                                        <select class="form-control mt-3" id="selectProvinsi">
+                                            <option>Provinsi</option>
+                                        </select>
+                                        <select class="form-control mt-3" id="selectKota">
+                                            <option>Kota</option>
+                                        </select>
+                                        <select class="form-control mt-3" id="selectKecamatan">
+                                            <option>Kecamatan</option>
+                                        </select>
+                                        <select class="form-control mt-3" id="selectKelurahan">
+                                            <option>Kelurahan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="flex-grow-1">
+                                    <h5>Jalan & No Rumah</h5>
+                                    <textarea class="form-control" value="" name="alamat" id="alamat" rows="3"></textarea>
+                                </div>
+                            </div>
                             <div class="form-group ">
                                 <label for="gambar" class="col-form-label text-md-right">Profil</label>
                                 <input id="gambar" type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar" value="{{ $user->gambar }}" autocomplete="gambar">
@@ -97,31 +117,6 @@
                                 <input id="no_telp" type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" value="{{ $user->no_telp }}" required autocomplete="no_telp" autofocus>
 
                                 @error('no_telp')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="alamat" class="col-form-label text-md-right">Alamat</label>
-                                <textarea for="alamat" name="alamat" class="form-control @error('alamat') is-invalid @enderror" required="">{{ $user->alamat }}</textarea>
-
-                                @error('alamat')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group ">
-                                <label for="alamat" class="col-form-label text-md-right">Alamat</label>
-                                <select name="kota_id" for="kota_id" name="kota_id" class="form-control @error('kota_id') is-invalid @enderror" required="">
-                                    @foreach($kota as $kotas)
-                                        <option value="{{ $kotas->id }}">{{ $kotas->nama_kota }}</option>
-                                    @endforeach
-                                </select>
-                                @error('kota_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -162,5 +157,133 @@
         </section>
     </div>
 </div>
+<script>
+    let selectProvinsi = document.getElementById('selectProvinsi');
+    let selectKota = document.getElementById('selectKota');
+    let selectKecamatan = document.getElementById('selectKecamatan');
+    let selectKelurahan = document.getElementById('selectKelurahan');
+    let alamat = document.getElementById('alamat');
+    document.addEventListener("DOMContentLoaded", function() {
+        fetchProvinsi();
+        selectKota.style.display = "none";
+        selectKecamatan.style.display = "none";
+        selectKelurahan.style.display = "none";
+        // fetchKota();
+        // fetchKecamatan();
+        // fetchKelurahan();
+        getValueToAlamat();
+    });
+    const config = {
+        method: "GET"
+    };
+    async function fetchProvinsi() {
+        const URL = 'http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json';
+        await fetch(URL, config)
+            .then(response => response.json())
+            .then(provinsi => {
+                if (provinsi !== null || undefined) {
+                    provinsi.map(data => {
+                        let opt = document.createElement('option');
+                        opt.value = data.id;
+                        opt.innerHTML = data.name;
+                        selectProvinsi.appendChild(opt);
+                    })
+                } else {
+                    let opt = document.createElement('option');
+                    opt.value = "";
+                    opt.innerHTML = "Data tidak tersedia";
+                    selectKelurahan.appendChild(opt);
+                }
+            }).catch(error => alert(`Data provinsi tidak ada`));
+    }
+    async function fetchKota(id) {
+        const URL = `http://www.emsifa.com/api-wilayah-indonesia/api/regencies/${id === undefined || null ? "" : id}.json`;
+        await fetch(URL, config)
+            .then(response => response.json())
+            .then(kota => {
+                if (kota !== null || undefined) {
+                    kota.map(data => {
+                        let opt = document.createElement('option');
+                        opt.value = data.id;
+                        opt.innerHTML = data.name;
+                        selectKota.appendChild(opt);
+                    })
+                } else {
+                    let opt = document.createElement('option');
+                    opt.value = "";
+                    opt.innerHTML = "Data tidak tersedia";
+                    selectKelurahan.appendChild(opt);
+                }
+            });
+    }
+    async function fetchKecamatan(id) {
+        const URL = `http://www.emsifa.com/api-wilayah-indonesia/api/districts/${id === undefined || null ? "" : id}.json`;
+        await fetch(URL, config)
+            .then(response => response.json())
+            .then(kecamatan => {
+                if (kecamatan !== null || undefined) {
+                    kecamatan.map(data => {
+                        let opt = document.createElement('option');
+                        opt.value = data.id;
+                        opt.innerHTML = data.name;
+                        selectKecamatan.appendChild(opt);
+                    })
+                } else {
+                    let opt = document.createElement('option');
+                    opt.value = "";
+                    opt.innerHTML = "Data tidak tersedia";
+                    selectKelurahan.appendChild(opt);
+                }
+            });
+    }
+    async function fetchKelurahan(id) {
+        const URL = `http://www.emsifa.com/api-wilayah-indonesia/api/villages/${id === undefined || null ? "" : id}.json`;
+        await fetch(URL, config)
+            .then(response => response.json())
+            .then(kelurahan => {
+                if (kelurahan !== null || undefined) {
+                    kelurahan.map(data => {
+                        let opt = document.createElement('option');
+                        opt.value = data.id;
+                        opt.innerHTML = data.name;
+                        selectKelurahan.appendChild(opt);
+                    })
+                } else {
+                    let opt = document.createElement('option');
+                    opt.value = "";
+                    opt.innerHTML = "Data tidak tersedia";
+                    selectKelurahan.appendChild(opt);
+                }
+            });
+    }
+    // selectProvinsi.addEventListener('change', () => {
+    //     console.log(selectProvinsi.options[selectProvinsi.selectedIndex].text);
+    // })
+    selectProvinsi.addEventListener('change', () => {
+        fetchKota(selectProvinsi.value);
+        selectKota.style.display = "block";
+        selectKota.innerHTML = '';
+        selectKecamatan.innerHTML = '';
+        selectKelurahan.innerHTML = '';
+    });
+    selectKota.addEventListener('change', () => {
+        fetchKecamatan(selectKota.value);
+        selectKecamatan.style.display = "block";
+        selectKecamatan.innerHTML = '';
+        selectKelurahan.innerHTML = '';
+    });
+    selectKecamatan.addEventListener('change', () => {
+        fetchKelurahan(selectKecamatan.value);
+        selectKelurahan.style.display = "block";
+        selectKelurahan.innerHTML = '';
+    });
 
+    function getValueToAlamat() {
+        alamat.addEventListener('change', () => {
+            let alamatText = alamat.value;
+            document.getElementById('alamat').value = `${alamatText}, ${selectKelurahan.options[selectKelurahan.selectedIndex].text}, ${selectKecamatan.options[selectKecamatan.selectedIndex].text}, ${selectKota.options[selectKota.selectedIndex].text}, ${selectProvinsi.options[selectProvinsi.selectedIndex].text}, `;
+            // console.log(`${alamatText}, ${selectKelurahan.options[selectKelurahan.selectedIndex].text}, ${selectKecamatan.options[selectKecamatan.selectedIndex].text}, ${selectKota.options[selectKota.selectedIndex].text}, ${selectProvinsi.options[selectProvinsi.selectedIndex].text}, `);
+        });
+    }
+</script>
 @stop

@@ -67,7 +67,11 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'gambar' => 'default2.png'
+            'gambar' => 'default2.png',
+            'indoregion_regencies_id' => '3276',
+            'indoregion_provinces_id' => '32',
+            'indoregion_districts_id' => '3276061',
+            'indoregion_villages_id' => '3276061001',
         ]);
     }
 }

@@ -1,4 +1,4 @@
-@extends('perjalanan.app')
+@extends('perjalanan.app', ['title' => 'Create'])
 @section('content')
 <div class="card mt-5">
     <div class="card-body">

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\Province;
+use App\Models\Village;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +18,17 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','nik','alamat','gambar','no_telp'
+        'name', 
+        'email', 
+        'password',
+        'nik',
+        'alamat',
+        'gambar',
+        'no_telp', 
+        'regency_id',
+        'indoregion_provinces_id',
+        'indoregion_districts_id', 
+        'village_id'
     ];
 
     /**
@@ -53,6 +65,23 @@ class User extends Authenticatable implements MustVerifyEmail
     		return asset('images/default.jpg');
     	}
     	return asset('images/'.$this->gambar);
+    }
+
+    public function villages()
+    {
+        return $this->belongsTo('App\Models\Village', 'indoregion_villages_id');
+    }
+    public function regencies()
+    {
+        return $this->belongsTo('App\Models\Regency', 'indoregion_regencies_id');
+    }
+    public function districts()
+    {
+        return $this->belongsTo('App\Models\District', 'indoregion_districts_id');
+    }
+    public function province()
+    {
+        return $this->belongsTo('App\Models\Province', 'indoregion_provinces_id');
     }
 
 }

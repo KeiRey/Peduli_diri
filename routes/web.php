@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndoRegionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,4 +42,9 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
 });
 
 Auth::routes(['verify' => true]);
+
+Route::get('/form', [IndoRegionController::class,'form'])->name('form');
+Route::post('/getkabupaten', [IndoRegionController::class, 'getkabupaten'])->name('getkabupaten');
+Route::post('/getkecamatan', [IndoRegionController::class, 'getkecamatan'])->name('getkecamatan');
+Route::post('/getdesa', [IndoRegionController::class, 'getdesa'])->name('getdesa');  
 

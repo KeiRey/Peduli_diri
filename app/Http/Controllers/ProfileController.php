@@ -20,9 +20,8 @@ class ProfileController extends Controller
 
 	public function edit()
 	{
-		$kota = kota::all();
 		$user = User::where('id', Auth::user()->id)->first();
-		return view('perjalanan.editprofile',compact('user', 'kota'));
+		return view('perjalanan.editprofile',compact('user'));
 	}
 
     public function update(Request $request)

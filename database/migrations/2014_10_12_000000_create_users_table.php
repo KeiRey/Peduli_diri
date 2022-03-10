@@ -20,7 +20,10 @@ class CreateUsersTable extends Migration
             $table->text('alamat')->nullable();
             $table->string('no_telp',50)->nullable();
             $table->string('gambar',100)->nullable();
-            $table->string('kota_id',50)->nullable();
+            $table->string('indoregion_provinces_id', 50)->nullable()->references('id')->on('indoregion_provinces');
+            $table->string('indoregion_regencies_id', 50)->nullable()->references('id')->on('indoregion_regencies');
+            $table->string('indoregion_districts_id', 50)->nullable()->references('id')->on('indoregion_districts');
+            $table->string('indoregion_villages_id', 50)->nullable()->references('id')->on('indoregion_villages');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

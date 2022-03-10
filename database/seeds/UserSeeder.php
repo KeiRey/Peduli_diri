@@ -15,7 +15,10 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'nik' => '21323123',
             'alamat' => 'jln apa aja',
-            'kota_id' => '2',
+            'indoregion_regencies_id' => '3276',
+            'indoregion_provinces_id' => '32',
+            'indoregion_districts_id' => '3276061',
+            'indoregion_villages_id' => '3276061001',
             'no_telp' => '09213219',
             'gambar' => 'default2.png',
             'name' => 'Keimal Reyyan P',
@@ -23,15 +26,5 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123'),
         ]);
         
-        DB::table('users')->insert([
-            'nik' => '132321321',
-            'alamat' => 'jln apa aja',
-            'kota_id' => '2',
-            'no_telp' => '13121',
-            'gambar' => 'default2.png',
-            'name' => 'Alif Nur Miftah',
-            'email' => 'alif@gmail.com',
-            'password' => bcrypt('123'),
-        ]);
     }
 }
