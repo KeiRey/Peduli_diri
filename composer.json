@@ -10,11 +10,13 @@
     "require": {
         "php": "^7.1.3",
         "azishapidin/indoregion": "2.2.2",
+        "brian2694/laravel-toastr": "^5.57",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "parsecsv/php-parsecsv": "1.2",
-        "realrashid/sweet-alert": "^5.0"
+        "realrashid/sweet-alert": "^5.0",
+        "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

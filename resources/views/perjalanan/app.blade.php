@@ -9,7 +9,7 @@
         @isset($title)
         {{ config('app.name') }} |
         @endisset
-        {{ $title }} 
+        {{ $title }}
     </title>
     <link rel="icon" type="image/png" href="{{asset('assets/img/logo.png')}}" />
     <meta content="" name="description">
@@ -35,6 +35,11 @@
     <link href="{{asset('assets-form/css/main.css')}}" rel="stylesheet" media="all">
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset ('assets-login/fonts/icomoon/style.css')}}">
+    <link rel="stylesheet" href="{{asset ('assets-login/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset ('assets-login/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset ('assets-login/css/style.css')}}">
+
 
 </head>
 
@@ -59,6 +64,10 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
+    <script src="{{asset('assets-login/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('assets-login/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets-login/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets-login/js/main.js')}}"></script>
     <script src="assets/vendor/purecounter/purecounter.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -80,7 +89,7 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-
+    @include('sweetalert::alert')
 </body>
 
 </html>

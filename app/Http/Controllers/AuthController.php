@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\User;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class AuthController extends Controller
 {
@@ -17,15 +18,16 @@ class AuthController extends Controller
     public function postlogin(Request $request)
     {
         if(Auth::attempt($request->only('email','password'))){
+            Toastr::success('message', 'title', ['options']);
             return redirect('/home');
         }
-            return redirect('/login');
+            return redirect('/login')->with('toast_error', 'Anda Gagal Login');;
     }
 
     public function logout()
     {
         Auth::Logout();
-        return redirect('/login')->with('toast_warning', 'Anda Telah Logout');
+        return redirect('/login')->with("record_added", "NEW Login");
 
     }
 

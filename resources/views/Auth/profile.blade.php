@@ -19,7 +19,7 @@
                             <tr>
                                 <td>NIK</td>
                                 <td>:</td>
-                                <td>{{ $user->nik }}</td>
+                                <td>{{ $user->nik ?? "Tidak ada data" }}</td>
                             </tr>
                             <tr>
                                 <td>No Telpon</td>
@@ -68,8 +68,8 @@
                             <div>
                                 <div class="flex-grow-1">
                                     <div class="form-group">
-                                        <h5>Alamat</h5>
-                                        <select class="form-control mt-3" id="selectProvinsi">
+                                        <label for="selectProvinsi" class="col-form-label text-md-right">Provinsi</label>
+                                        <select class="form-control" id="selectProvinsi">
                                             <option>Provinsi</option>
                                         </select>
                                         <select class="form-control mt-3" id="selectKota">

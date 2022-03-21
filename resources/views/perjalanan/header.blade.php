@@ -1,4 +1,8 @@
 <!-- ======= Header ======= -->
+<?php
+use Illuminate\Support\Facades\Auth;
+?>
+
 <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
@@ -10,14 +14,22 @@
         <nav id="navbar" class="navbar">
             <ul>
                 @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
-                @endif
+                <?php if (!Auth::user()) : ?>
+                    @if (Route::getCurrentRoute()->uri() == 'login' || Route::getCurrentRoute()->uri() == 'register')
+                    <li class="nav-item mr-4">
+                        <a class="nav-link active" aria-current="page" href="/" style="font-size: 16px">Home</a>
+                    </li>
+                    @endif
+                    @if (Route::getCurrentRoute()->uri() == 'login')
+                    <li class="nav-item">
+                        <a  href="{{ route('register') }}">Register</a>
+                    </li>
+                    @else
+                    <li class="nav-item">
+                        <a  href="{{ route('login') }}">Log in</a>
+                    </li>
+                    @endif
+                <?php endif; ?>
                 @else
                 <li><a class="nav-link {{ set_active('home') }}  scrollto " href="/home">Home</a></li>
                 <li><a class="nav-link {{ set_active('index') }} scrollto" href="/index">Perjalanan</a></li>

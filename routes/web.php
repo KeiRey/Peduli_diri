@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndoRegionController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,3 +49,8 @@ Route::post('/getkabupaten', [IndoRegionController::class, 'getkabupaten'])->nam
 Route::post('/getkecamatan', [IndoRegionController::class, 'getkecamatan'])->name('getkecamatan');
 Route::post('/getdesa', [IndoRegionController::class, 'getdesa'])->name('getdesa');  
 
+Route::get('/produk', 'ProdukController@index');
+Route::get('/getData', 'ProdukController@getData');
+Route::post('/storeData', 'ProdukController@store');
+Route::post('/editData', 'ProdukController@edit');
+Route::post('/destroyData', 'ProdukController@destroy');
