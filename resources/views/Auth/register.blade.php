@@ -1,4 +1,4 @@
-@extends('perjalanan.app', ['title' => 'Login'])
+@extends('layouts.app', ['title' => 'Login'])
 @section('content')
 <div class="col-md-6">
     <img src="{{asset('images/Travelers-bro.png')}}" alt="Image" class="img-fluid">

@@ -5,7 +5,7 @@
             <div class="row gy-4">
                 <div class=" col-md-12 footer-info ">
                     <a href="/home" class="logo d-flex align-items-center">
-                        <img src="assets/img/logo.png" alt="">
+                        <img src="{{asset('assets/img/Capture-removebg-preview.png')}}" alt="">
                         <span>PeduliDiri</span>
                     </a>
                     <p>Catat dan manage perjalanan anda.</p>

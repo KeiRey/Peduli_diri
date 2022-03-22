@@ -1,12 +1,11 @@
-@extends('perjalanan.app', ['title' => 'Index'])
+@extends('layouts.app', ['title' => 'Index'])
 @section('content')
 <div class="card mt-5">
     <div class="card-body">
         <section id="team" class="team">
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">
-                    @include('perjalanan.profil')
-
+                    @include('layouts.profil')
                     <div class="col-lg-9 col-md-6">
                         <table class="table table-responsive table-hover">
                             <thead>

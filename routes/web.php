@@ -17,15 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', function(){
+    return view('dashboard');
+});
+
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin ', 'AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
 Route::get('/registrasi', 'AuthController@registrasi')->name('registrasi');
 Route::post('/simpanregistrasi', 'AuthController@simpanregistrasi');
-
-Route::get('/', function(){
-    return view('dashboard');
-});
 
 Route::get('/home', 'PerjalananController@home')->name('home')->middleware('verified');
 
@@ -43,11 +43,6 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
 });
 
 Auth::routes(['verify' => true]);
-
-Route::get('/form', [IndoRegionController::class,'form'])->name('form');
-Route::post('/getkabupaten', [IndoRegionController::class, 'getkabupaten'])->name('getkabupaten');
-Route::post('/getkecamatan', [IndoRegionController::class, 'getkecamatan'])->name('getkecamatan');
-Route::post('/getdesa', [IndoRegionController::class, 'getdesa'])->name('getdesa');  
 
 Route::get('/produk', 'ProdukController@index');
 Route::get('/getData', 'ProdukController@getData');

@@ -1,13 +1,14 @@
 <!-- ======= Header ======= -->
 <?php
+
 use Illuminate\Support\Facades\Auth;
 ?>
 
 <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center">
-            <img src="{{asset('assets/img/logo.png')}}" alt="">
+        <a href="/home" class="logo d-flex align-items-center">
+            <img src="{{asset('assets/img/Capture-removebg-preview.png')}}" alt="">
             <span>PeduliDiri</span>
         </a>
 
@@ -22,11 +23,11 @@ use Illuminate\Support\Facades\Auth;
                     @endif
                     @if (Route::getCurrentRoute()->uri() == 'login')
                     <li class="nav-item">
-                        <a  href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('register') }}">Register</a>
                     </li>
                     @else
                     <li class="nav-item">
-                        <a  href="{{ route('login') }}">Log in</a>
+                        <a href="{{ route('login') }}">Log in</a>
                     </li>
                     @endif
                 <?php endif; ?>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -64,14 +65,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'remember_token' => Str::random(60),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'gambar' => 'default2.png',
-            'indoregion_regencies_id' => '3276',
-            'indoregion_provinces_id' => '32',
-            'indoregion_districts_id' => '3276061',
-            'indoregion_villages_id' => '3276061001',
         ]);
     }
 }

@@ -1,4 +1,4 @@
-@extends('perjalanan.app', ['title' => 'Dashboard'])
+@extends('layouts.app', ['title' => 'Dashboard'])
 @section('content')
 
 <div class="col-lg-6 d-flex flex-column justify-content-center">

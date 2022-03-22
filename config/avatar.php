@@ -13,21 +13,21 @@ return [
     'shape' => 'circle',
 
     // Image width, in pixel
-    'width'    => 100,
+    'width'    => 350,
 
     // Image height, in pixel
-    'height'   => 100,
+    'height'   => 350,
 
     // Number of characters used as initials. If name consists of single word, the first N character will be used
-    'chars'    => 2,
+    'chars'    => 5,
 
     // font size
-    'fontSize' => 48,
+    'fontSize' => 140,
 
     // Fonts used to render text.
     // If contains more than one fonts, randomly selected based on name supplied
     // You can provide absolute path, path relative to folder resources/laravolt/avatar/fonts/, or mixed.
-    'fonts'    => ['OpenSans-Bold.ttf', 'rockwell.ttf'],
+    'fonts'    => ['Sketch3D.otf' ],
 
     // List of foreground colors to be used, randomly selected based on name supplied
     'foregrounds'   => [

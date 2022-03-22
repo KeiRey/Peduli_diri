@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\User;
-use Yoeunes\Toastr\Facades\Toastr;
+use Brian2694\Toastr\Facades\Toastr;
 
 class AuthController extends Controller
 {
@@ -18,7 +18,7 @@ class AuthController extends Controller
     public function postlogin(Request $request)
     {
         if(Auth::attempt($request->only('email','password'))){
-            Toastr::success('message', 'title', ['options']);
+            Toastr::success('Anda berhasil Login', 'Sukses');
             return redirect('/home');
         }
             return redirect('/login')->with('toast_error', 'Anda Gagal Login');;
@@ -27,7 +27,8 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::Logout();
-        return redirect('/login')->with("record_added", "NEW Login");
+        Toastr::warning('Anda telah logout', 'Peringatan!');
+        return redirect('/login');
 
     }
 
@@ -51,6 +52,8 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
             'remember_token' => Str::random(60),
         ]);
-        return redirect('/login')->with('toast_success', 'Silahkan Login Dengan Akun Yang Anda Buat');
+
+        Toastr::success('Messages in here', 'Title', ["closeButton" => true, "progressBar" => true]);
+        return redirect('/login');
     }
 }
