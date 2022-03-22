@@ -33,13 +33,15 @@
     <link href="{{asset('assets-form/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('assets-form/vendor/datepicker/daterangepicker.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('assets-form/css/main.css')}}" rel="stylesheet" media="all">
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{asset ('assets-login/fonts/icomoon/style.css')}}">
     <link rel="stylesheet" href="{{asset ('assets-login/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset ('assets-login/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset ('assets-login/css/style.css')}}">
+    <!-- Template Main CSS File -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
+    <link href="assets/css/style.css" rel="stylesheet">
 
 </head>
 
