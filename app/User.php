@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'nik',
         'alamat',
+        'level',
         'gambar',
         'no_telp', 
         'regency_id',

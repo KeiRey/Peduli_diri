@@ -1,11 +1,13 @@
 @extends('layouts.app', ['title' => 'Login'])
 @section('content')
 <div class="col-md-6">
-    <img src="{{asset('images/Travelers-bro.png')}}" alt="Image" class="img-fluid">
+    <div data-aos="fade-up" data-aos-delay="200">
+        <img src="{{asset('assets/images/Ecosystem-amico.png')}}" alt="Image" class="img-fluid">
+    </div>
 </div>
 <div class="col-md-6 contents">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8" data-aos="zoom-out" data-aos-delay="200">
             <div class="mb-4">
                 <h3>Register</h3>
             </div>

@@ -32,8 +32,32 @@ use Illuminate\Support\Facades\Auth;
                     @endif
                 <?php endif; ?>
                 @else
+
+                
+                <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#">Drop Down 1</a></li>
+                        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li><a href="#">Deep Drop Down 1</a></li>
+                                <li><a href="#">Deep Drop Down 2</a></li>
+                                <li><a href="#">Deep Drop Down 3</a></li>
+                                <li><a href="#">Deep Drop Down 4</a></li>
+                                <li><a href="#">Deep Drop Down 5</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Drop Down 2</a></li>
+                        <li><a href="#">Drop Down 3</a></li>
+                        <li><a href="#">Drop Down 4</a></li>
+                    </ul>
+                </li> -->
                 <li><a class="nav-link {{ set_active('home') }}  scrollto " href="/home">Home</a></li>
+                @if(Auth::user()->level == "admin")
+                <li><a class="nav-link {{ set_active('admin') }}  scrollto " href="/admin">Admin</a></li>
+                @endif
+                @if(Auth::user()->level == "user")
                 <li><a class="nav-link {{ set_active('index') }} scrollto" href="/index">Perjalanan</a></li>
+                @endif
                 <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/profile">Profil</a></li>

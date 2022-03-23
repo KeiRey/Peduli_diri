@@ -19,10 +19,10 @@ return [
     'height'   => 350,
 
     // Number of characters used as initials. If name consists of single word, the first N character will be used
-    'chars'    => 5,
+    'chars'    => 6,
 
     // font size
-    'fontSize' => 140,
+    'fontSize' => 120,
 
     // Fonts used to render text.
     // If contains more than one fonts, randomly selected based on name supplied

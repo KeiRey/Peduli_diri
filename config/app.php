@@ -164,6 +164,7 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         AzisHapidin\IndoRegion\IndoRegionServiceProvider::class,
         Brian2694\Toastr\ToastrServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -232,7 +233,7 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'Avatar'    => Laravolt\Avatar\Facade::class,
-
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

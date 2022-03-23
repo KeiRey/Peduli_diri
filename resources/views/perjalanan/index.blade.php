@@ -17,7 +17,7 @@
                                     <th scope="col" style="width: 14%;">Lokasi</th>
                                     <th scope="col" style="width: 17%;">Suhu Tubuh</th>
                                     <th scope="col" style="width: 15%;">
-                                        <a href="/create" class="text-success" style="border-color: green; border-style: solid; padding:5px; border-radius:10px;">Tambah</a>
+                                        <a href="/create" class="btn btn-sm btn-outline-success" >Tambah</a>
                                     </th>
                                 </tr>
                             </thead>
@@ -39,11 +39,9 @@
                         </table>
                         <div class="row">
                             <div class="col-md-6 mt-3">
-                                Tampilan
-                                {{ $data->firstItem() }}
-                                Sampai
-                                {{ $data->lastItem() }}
-                                Item
+                                Halaman
+                                {{ $data->currentPage() }}
+                               
                             </div>
                             <div class="col-md-6 d-flex justify-content-end mt-3">
                                 {{ $data->links() }}

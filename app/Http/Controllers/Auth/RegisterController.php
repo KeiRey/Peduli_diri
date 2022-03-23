@@ -68,6 +68,7 @@ class RegisterController extends Controller
             'remember_token' => Str::random(60),
             'name' => $data['name'],
             'email' => $data['email'],
+            'level' => 'user',
             'password' => Hash::make($data['password']),
         ]);
     }

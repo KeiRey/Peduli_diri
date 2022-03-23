@@ -29,6 +29,13 @@ Route::post('/simpanregistrasi', 'AuthController@simpanregistrasi');
 
 Route::get('/home', 'PerjalananController@home')->name('home')->middleware('verified');
 
+//Admin Route
+Route::group(['middleware' => ['auth', 'prevent-back-history', 'ceklevel:admin']], function () {
+    Route::get('/admin', 'AdminController@index')->name('admin');
+    Route::get('/user/cetak_pdf', 'AdminController@cetak_pdf_user');
+    Route::get('/admin/cetak_pdf', 'AdminController@cetak_pdf_admin');
+});
+
 Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
 
     Route::get('/profile', 'ProfileController@profile');
@@ -44,6 +51,8 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
 
 Auth::routes(['verify' => true]);
 
+
+// Cuman Nyoba Ajax
 Route::get('/produk', 'ProdukController@index');
 Route::get('/getData', 'ProdukController@getData');
 Route::post('/storeData', 'ProdukController@store');
