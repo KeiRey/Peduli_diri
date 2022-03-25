@@ -36,11 +36,13 @@ class PerjalananController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
 
         if (empty($user->nik)) {
-            return redirect('/profile')->with('gagal', 'Profile Belum Lengkap');
+            Toastr::warning('Profil anda belum lebkap', 'Peringatan !');
+            return redirect('/profile');
         }
 
         if (empty($user->no_telp)) {
-            return redirect('/profile')->with('gagal', 'Profile Belum Lengkap');
+            Toastr::warning('Profil anda belum lebkap', 'Peringatan !');
+            return redirect('/profile');
         }
 
         return view('perjalanan.create');

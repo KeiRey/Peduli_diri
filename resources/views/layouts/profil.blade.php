@@ -12,8 +12,8 @@
               </div>
           </div>
           <div class="member-info">
-              <h4>{{ Auth::user()->name }}</h4>
-              <span>{{ Auth::user()->email }}</span>
+              <!-- <h4>{{ Auth::user()->email }}</h4> -->
+              <p style="color: #000";>{{ Auth::user()->email }}</p>
           </div>
       </div>
   </div>
