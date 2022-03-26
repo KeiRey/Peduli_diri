@@ -29,6 +29,9 @@ Route::post('/simpanregistrasi', 'AuthController@simpanregistrasi');
 
 Route::get('/home', 'PerjalananController@home')->name('home')->middleware('verified');
 
+
+//========================Middleware Route================================//
+
 //Admin Route
 Route::group(['middleware' => ['auth', 'prevent-back-history', 'ceklevel:admin']], function () {
     Route::get('/admin', 'AdminController@index')->name('admin');
@@ -36,18 +39,26 @@ Route::group(['middleware' => ['auth', 'prevent-back-history', 'ceklevel:admin']
     Route::get('/admin/cetak_pdf', 'AdminController@cetak_pdf_admin');
 });
 
-Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
-
-    Route::get('/profile', 'ProfileController@profile');
-    Route::get('/edit/profile/{id}', 'ProfileController@edit');
-    Route::post('/profile', 'ProfileController@update');
-
+//User Route
+Route::group(['middleware' => ['auth', 'prevent-back-history', 'ceklevel:user']], function () {
     Route::get('/index', 'PerjalananController@index')->name('index');
     Route::get('/create', 'PerjalananController@create');
     Route::post('/store', 'PerjalananController@store');
     Route::get('/delete/{id}', 'PerjalananController@delete');
     Route::get('/deleteAll', 'PerjalananController@deleteAll');
 });
+
+//Route Umum
+Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
+
+    Route::get('/profile', 'ProfileController@profile');
+    Route::get('/edit/profile/{id}', 'ProfileController@edit');
+    Route::post('/profile', 'ProfileController@update');
+   
+});
+
+//========================end Middleware Route================================//
+
 
 Auth::routes(['verify' => true]);
 
