@@ -58,7 +58,12 @@ use Illuminate\Support\Facades\Auth;
                 @if(Auth::user()->level == "user")
                 <li><a class="nav-link {{ set_active('index') }} scrollto" href="/index">Perjalanan</a></li>
                 @endif
-                <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown">
+                    <a href="#">
+                        <!-- <span>{{ Auth::user()->name }}</span> -->
+                        <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" style="width:40px" class="img-fluid" alt="">
+                        <!-- <i class="bi bi-chevron-down"></i> -->
+                     </a>
                     <ul>
                         <li><a href="/profile">Profil</a></li>
                         <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>

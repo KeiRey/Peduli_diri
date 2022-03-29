@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $user = User::all();
+        $user = User::simplePaginate(3);
         return view('admin.index', compact('user'));
     }
     public function cetak_pdf_user()

@@ -1,12 +1,17 @@
 @extends('layouts.app', ['title' => 'Index'])
 @section('content')
-<div class="card mt-5">
-    <div class="card-body">
-        <section id="team" class="team">
+<div class="row mt-5">
+    <div class="col-md-3">
+          <section id="team" class="team">
             <div class="container" data-aos="fade-up">
-                <div class="row gy-4">
+                <div class="row">
                     @include('layouts.profil')
-                    <div class="col-lg-9 col-md-6">
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-9">
+               <div class="col-lg-12">
                         <table class="table table-responsive table-hover">
                             <thead>
                                 <tr>
@@ -49,12 +54,8 @@
                         </div>
                     </div>
 
-                </div>
-
-            </div>
-
-        </section>
     </div>
 </div>
+      
 
 @stop

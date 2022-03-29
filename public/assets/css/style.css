@@ -12,6 +12,24 @@
   scroll-behavior: smooth;
 }
 
+.biasa-aja{
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.biasa-aja::after{
+  content: "";
+  background-color: #dddddd;
+  opacity: 20%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; 
+  border-radius: 10px; 
+  }
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -1193,8 +1211,7 @@ section {
 # Team
 --------------------------------------------------------------*/
 .team {
-  background: #fff;
-  padding: 60px 0;
+  padding: 0px 0;
 }
 .team .member {
   padding: 10px;
@@ -1205,6 +1222,15 @@ section {
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
   transition: 0.3s;
 }
+
+@media (max-width: 765px) {
+  .team .member {
+    width: 300px;
+    margin-left: 60px;
+    margin-bottom: 30px;
+  }
+}
+
 .team .member .member-img {
   position: relative;
   overflow: hidden;
