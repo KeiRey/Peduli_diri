@@ -19,15 +19,15 @@ return [
     'height'   => 350,
 
     // Number of characters used as initials. If name consists of single word, the first N character will be used
-    'chars'    => 6,
+    'chars'    => 3,
 
     // font size
-    'fontSize' => 120,
+    'fontSize' => 150,
 
     // Fonts used to render text.
     // If contains more than one fonts, randomly selected based on name supplied
     // You can provide absolute path, path relative to folder resources/laravolt/avatar/fonts/, or mixed.
-    'fonts'    => ['FrankyOutline.ttf' ],
+    'fonts'    => ['Sketch3D.otf' ],
 
     // List of foreground colors to be used, randomly selected based on name supplied
     'foregrounds'   => [
