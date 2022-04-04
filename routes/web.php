@@ -27,7 +27,7 @@ Route::get('/logout', 'AuthController@logout');
 Route::get('/registrasi', 'AuthController@registrasi')->name('registrasi');
 Route::post('/simpanregistrasi', 'AuthController@simpanregistrasi');
 
-Route::get('/home', 'PerjalananController@home')->name('home')->middleware('verified');
+Route::get('/home', 'PerjalananController@home')->name('home')->middleware(['verified','auth', 'prevent-back-history']);
 
 
 //========================Middleware Route================================//

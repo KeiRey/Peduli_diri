@@ -28,7 +28,7 @@ class AuthController extends Controller
     {
         Auth::Logout();
         Toastr::warning('Anda telah logout', 'Peringatan!');
-        return redirect('/login');
+        return redirect('/');
 
     }
 

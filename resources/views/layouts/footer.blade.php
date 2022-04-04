@@ -8,7 +8,7 @@
                         <img src="{{asset('assets/img/Capture-removebg-preview.png')}}" alt="">
                         <span>PeduliDiri</span>
                     </a>
-                    <p>Catat dan manage perjalanan anda.</p>
+                    <p style="color: black">Catat dan manage perjalanan anda.</p>
                     <!-- <div class="social-links mt-3">
                             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
