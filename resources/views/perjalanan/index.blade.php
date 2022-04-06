@@ -1,6 +1,6 @@
 @extends('layouts.app', ['title' => 'Index'])
 @section('content')
-    <div class="row mt-5">
+    <div class="row mt-5 biasa-aja">
         <div class="col-md-3">
             <section id="team" class="team">
                 <div class="container" data-aos="fade-up">
@@ -22,7 +22,7 @@
                             <th scope="col" style="width: 14%;">Lokasi</th>
                             <th scope="col" style="width: 17%;">Suhu Tubuh</th>
                             <th scope="col" style="width: 15%;">
-                                <a href="/create" class="btn btn-sm btn-outline-success">Tambah</a>
+                                <a href="/create" class="btn btn-sm btn-success">Tambah</a>
                             </th>
                         </tr>
                     </thead>

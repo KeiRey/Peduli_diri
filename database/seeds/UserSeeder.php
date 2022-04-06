@@ -13,17 +13,17 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'nik' => '21323123',
-            'alamat' => 'jln apa aja',
-            'indoregion_regencies_id' => '3276',
-            'indoregion_provinces_id' => '32',
-            'indoregion_districts_id' => '3276061',
-            'indoregion_villages_id' => '3276061001',
-            'no_telp' => '09213219',
-            'gambar' => 'default2.png',
-            'name' => 'Keimal Reyyan P',
-            'email' => 'keimal@gmail.com',
-            'password' => bcrypt('123'),
+          'nik' => '9821921812',
+          'name' => 'Admin',
+          'level' => 'admin',
+          'alamat' => 'Jln Melati III, GANDUL, CINERE, KOTA DEPOK, JAWA BARAT',
+          'no_telp' => '08389878989',
+          'email' => 'admin@gmail.com',
+          'email_verified_at' => '2022-04-05 09:08:17',
+          'password' => bcrypt('123'),
+          'remember_token' => str_random(60),
+          'created_at' => '2022-04-05 09:07:31',
+          'updated_at' => '2022-04-05 10:21:24'
         ]);
         
     }

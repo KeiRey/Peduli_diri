@@ -51,7 +51,7 @@
 
                 </div>
 
-                <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                <input type="submit" value="Regis" class="btn btn-block btn-primary">
                 <div class="d-flex mt-3 align-items-center">
                     <a href="{{ route('login') }}" class="forgot-pass"> Sudah Punya Akun </a>
                 </div>
